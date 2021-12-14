@@ -1,6 +1,5 @@
 import React from 'react';
-import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity } from 'react-native';
-import DataTable from "react-data-table-component";
+import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity, Button } from 'react-native';
 
 
 
@@ -18,7 +17,7 @@ export default class FetchExample extends React.Component {
       bevitel1:szam
     }
 
-  fetch("http://172.16.0.11:3000/statisztika", {
+  fetch("http://172.16.0.15:3000/statisztika", {
       method: "POST",
       body: JSON.stringify,
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -32,7 +31,7 @@ export default class FetchExample extends React.Component {
 
 
   componentDidMount(){
-    return fetch('http://172.16.0.11:3000/statisztika')
+    return fetch('http://172.16.0.15:3000/statisztika')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -43,6 +42,8 @@ export default class FetchExample extends React.Component {
 
         });
         alert(JSON.stringify(this.state.dataSource))
+        //split
+
       })
       .catch((error) =>{
         console.error(error);
@@ -50,8 +51,6 @@ export default class FetchExample extends React.Component {
   }
 
   render(){
-
-
 
     
 
@@ -65,21 +64,41 @@ export default class FetchExample extends React.Component {
 
     return(
       <View style={{flex: 1, paddingTop:20}}>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={{width: 150, height: 50, backgroundColor: 'powderblue'}} >
+              <Button onPress={() => navigation.goBack()} title="Rendezés pont" />
+            </View>
+
+          </View>
+
+
         <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
 
-          <View >
-          <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_pont} </Text>  
-          </View>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} >
+              <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_pont}</Text>
+            </View>
+            <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} >
+            <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_halal}</Text>
+            </View>
+            <View style={{width: 50, height: 50, backgroundColor: 'blue'}} >
+              <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_ido}</Text>
+            </View>
+            <View style={{width: 230, height: 50, backgroundColor: 'steelblue'}} >
+              <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_date}</Text>
+            </View>
 
+          </View>
         }
+
+        
 
         
           keyExtractor={({statisztika_id}, index) => statisztika_id}
         />
       </View>
-      
     );
   }
 }
