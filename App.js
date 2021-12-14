@@ -17,7 +17,7 @@ function HomeScreen({ navigation }) {
       />
 
       <Button
-        onPress={() => navigation.navigate('Test')}
+        onPress={() => navigation.navigate('Statisztika')}
         title="Go to test"
       />
 
