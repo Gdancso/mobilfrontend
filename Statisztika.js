@@ -11,13 +11,99 @@ export default class FetchExample extends React.Component {
     this.state ={ isLoading: true, dataSource:[]}
   }
 
+  rendezes_pont=()=>{
+    alert("hello")
+    return fetch('http://172.16.0.12:3000/rend_pont')
+    .then((response) => response.json())
+    .then((responseJson) => {
+
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+      }, function(){
+
+      });
+      alert(JSON.stringify(this.state.dataSource))
+      //split
+
+    })
+    .catch((error) =>{
+      console.error(error);
+    });
+  }
+
+  rendezes_halal=()=>{
+    alert("hello")
+    return fetch('http://172.16.0.12:3000/rend_halal')
+    .then((response) => response.json())
+    .then((responseJson) => {
+
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+      }, function(){
+
+      });
+      alert(JSON.stringify(this.state.dataSource))
+      //split
+
+    })
+    .catch((error) =>{
+      console.error(error);
+    });
+  }
+
+  rendezes_ido=()=>{
+    alert("hello")
+    return fetch('http://172.16.0.12:3000/rend_ido')
+    .then((response) => response.json())
+    .then((responseJson) => {
+
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+      }, function(){
+
+      });
+      alert(JSON.stringify(this.state.dataSource))
+      //split
+
+    })
+    .catch((error) =>{
+      console.error(error);
+    });
+  }
+
+  rendezes_date=()=>{
+    alert("hello")
+    return fetch('http://172.16.0.12:3000/rend_date')
+    .then((response) => response.json())
+    .then((responseJson) => {
+
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+      }, function(){
+
+      });
+      alert(JSON.stringify(this.state.dataSource))
+      //split
+
+    })
+    .catch((error) =>{
+      console.error(error);
+    });
+  }
+
+
+
   szavazat=(szam)=>{
     //alert(szam)
     var bemenet={
       bevitel1:szam
     }
 
-  fetch("http://172.16.0.15:3000/statisztika", {
+  fetch("http://172.16.0.12:3000/statisztika", {
       method: "POST",
       body: JSON.stringify,
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -31,7 +117,7 @@ export default class FetchExample extends React.Component {
 
 
   componentDidMount(){
-    return fetch('http://172.16.0.15:3000/statisztika')
+    return fetch('http://172.16.0.12:3000/statisztika')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -66,7 +152,10 @@ export default class FetchExample extends React.Component {
       <View style={{flex: 1, paddingTop:20}}>
         <View style={{flex: 1, flexDirection: 'row'}}>
             <View style={{width: 150, height: 50, backgroundColor: 'powderblue'}} >
-              <Button onPress={() => navigation.goBack()} title="Rendezés pont" />
+              <Button onPress={() => this.rendezes_pont()} title="Rendezés pont" />
+              <Button onPress={() => this.rendezes_halal()} title="Rendezés halal" />
+              <Button onPress={() => this.rendezes_ido()} title="Rendezés ido" />
+              <Button onPress={() => this.rendezes_date()} title="Rendezés date" />
             </View>
 
           </View>
