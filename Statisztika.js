@@ -13,7 +13,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_pont=()=>{
     alert("hello")
-    return fetch('http://172.16.0.12:3000/rend_pont')
+    return fetch('http://172.16.0.18:3000/rend_pont')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -34,7 +34,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_halal=()=>{
     alert("hello")
-    return fetch('http://172.16.0.12:3000/rend_halal')
+    return fetch('http://172.16.0.18:3000/rend_halal')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -55,7 +55,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_ido=()=>{
     alert("hello")
-    return fetch('http://172.16.0.12:3000/rend_ido')
+    return fetch('http://172.16.0.18:3000/rend_ido')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -76,7 +76,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_date=()=>{
     alert("hello")
-    return fetch('http://172.16.0.12:3000/rend_date')
+    return fetch('http://172.16.0.18:3000/rend_date')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -103,7 +103,7 @@ export default class FetchExample extends React.Component {
       bevitel1:szam
     }
 
-  fetch("http://172.16.0.12:3000/statisztika", {
+  fetch("http://172.16.0.18:3000/statisztika", {
       method: "POST",
       body: JSON.stringify,
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -117,7 +117,7 @@ export default class FetchExample extends React.Component {
 
 
   componentDidMount(){
-    return fetch('http://172.16.0.12:3000/statisztika')
+    return fetch('http://172.16.0.18:3000/statisztika')
       .then((response) => response.json())
       .then((responseJson) => {
 
