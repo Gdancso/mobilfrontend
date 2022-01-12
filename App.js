@@ -3,7 +3,7 @@ import { Button, View, Animated } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Statisztika from './Statisztika';
-import Notifications from './Notifications';
+import Forum from './Forum';
 
 
 
@@ -12,8 +12,8 @@ function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
+        onPress={() => navigation.navigate('Forum')}
+        title="Go to Forum"
         
       />
 
@@ -28,9 +28,9 @@ function HomeScreen({ navigation }) {
 }
 
 
-function NotificationsScreen({ navigation }) {
+function ForumScreen({ navigation }) {
   return (
-    <Notifications/>
+    <Forum/>
   );
 }
 function statisztikafuggveny({ navigation }) {
@@ -48,7 +48,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Forum" component={ForumScreen} />
         <Drawer.Screen name="Statisztika" component={statisztikafuggveny} />
       </Drawer.Navigator>
     </NavigationContainer>

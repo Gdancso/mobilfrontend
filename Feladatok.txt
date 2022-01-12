@@ -1,0 +1,3 @@
+1. Split T szerint +
+2. Kommentek  meg jelenítése
+3. Home elkészítése
