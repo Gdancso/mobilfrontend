@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, TextInput, View,TouchableOpacity,FlatList,ActivityIndicator } from 'react-native';
 
+
+const ipcim="172.16.0.13"
 export default class Bevitel extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ export default class Bevitel extends Component {
       bevitel2: this.state.ertekeles_uzenet,
     }
  
-    fetch('http://172.16.0.14:3000/ertekeles', {
+    fetch('http://'+ipcim+':3000/ertekeles', {
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -39,7 +41,7 @@ export default class Bevitel extends Component {
       });
   }
   componentDidMount(){
-    return fetch('http://172.16.0.14:3000/ertekeles')
+    return fetch('http://'+ipcim+':3000/ertekeles')
       .then((response) => response.json())
       .then((responseJson) => {
 
