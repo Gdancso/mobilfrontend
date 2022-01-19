@@ -1,3 +1,7 @@
 1. Split T szerint +
-2. Kommentek  meg jelenítése
+2. Kommentek  meg jelenítése+
 3. Home Kialakítása
+4. statisztika táblázatba írása+ rendezés
+5. button meg javítása+
+6. nincs scrolling!+(De nem szép)
+

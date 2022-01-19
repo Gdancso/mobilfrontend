@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View,TouchableOpacity,FlatList,ActivityIndicator } from 'react-native';
+import { Text, TextInput, View,TouchableOpacity,FlatList,ActivityIndicator,ScrollView,StyleSheet } from 'react-native';
 
 
 const ipcim="172.16.0.13"
@@ -16,7 +16,27 @@ export default class Bevitel extends Component {
   }
 
   
+ frissit =()=>{
+  return fetch('http://'+ipcim+':3000/ertekeles_uzenet')
+  .then((response) => response.json())
+  .then((responseJson) => {
 
+    this.setState({
+      isLoading: false,
+      dataSource: responseJson,
+    }, function(){
+
+    });
+    alert(JSON.stringify(this.state.dataSource))
+    //split
+
+  })
+  .catch((error) =>{
+    console.error(error);
+  });
+
+
+ }
 
   felvitel=async ()=>{
     alert("Megnyomva")
@@ -34,37 +54,23 @@ export default class Bevitel extends Component {
       .then((szoveg) => {
 
         alert(szoveg)
-        this.props.frissit()
+        this.frissit()
       })
       .catch((error) =>{
         console.error(error);
       });
   }
+
   componentDidMount(){
-    return fetch('http://'+ipcim+':3000/ertekeles')
-      .then((response) => response.json())
-      .then((responseJson) => {
-
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson,
-        }, function(){
-
-        });
-        alert(JSON.stringify(this.state.dataSource2))
-        //split
-
-      })
-      .catch((error) =>{
-        console.error(error);
-      });
+    this.frissit()
   }
 
 
   render() {
     return (
+      <ScrollView style={styles.scrollView}>
       <View style={{alignItems:'center'}}>
-      <View style={{width:400,padding: 10,backgroundColor:"blue",alignItems:"center",borderRadius:20,marginLeft:20,marginRight:20}}>
+      <View style={{width:350,padding: 10,backgroundColor:"blue",alignItems:"center",borderRadius:20,marginLeft:20,marginRight:20}}>
          <Text style={{padding: 10, fontSize: 20,color:"white"}}>
          Név:
         </Text>
@@ -95,21 +101,39 @@ export default class Bevitel extends Component {
        
       </View>
 {/*Megjelenítés-------------------------------------------------------------------------------------------------------------------------*/}
-      <View style={{alignItems:'center'}}>
+      
+      <View style={styles.list}>
         <FlatList
-          data={this.state.dataSource2}
+
+          data={this.state.dataSource}
           renderItem={({item}) => 
-          <View style={{borderWidth:1,borderRadius:10,padding:10,width:500,marginLeft:13,paddingLeft:15,backgroundColor:"lightblue"}}>
+          <View style={{borderWidth:1,borderRadius:10,padding:10,width:300,marginLeft:13,paddingLeft:15,backgroundColor:"lightblue"}}>
             <Text style={{fontSize:20,padding:3,color:"white"}}>{item.ertekeles_uzenet} </Text>
             <Text style={{fontStyle:"italic",fontSize:15,padding:3}}>{item.ertekeles_nev} </Text>
-            <Text style={{fontSize:12}}>{item.ertekeles_date} </Text>
+            <Text style={{fontSize:12}}>{item.ertekeles_date.split ("T")[0].trim()} </Text>
           </View>
+          
         }
           keyExtractor={({ertekeles_id}, index) => ertekeles_id}
         />
       </View>
+      
       </View>
+      </ScrollView>
       
     );
   }
 }
+const styles = StyleSheet.create({
+  scrollView: {
+    //backgroundColor: 'lightgrey',
+    marginHorizontal: 30,
+    marginVertical:30,
+    width:350
+    
+  },
+  list:{
+    alignItems:'center',
+    
+  },
+});

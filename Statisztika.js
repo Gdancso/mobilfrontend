@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity, Button } from 'react-native';
+import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity, Button,SafeAreaView,StatusBar } from 'react-native';
 
 
 const ipcim="172.16.0.13";
@@ -136,10 +136,6 @@ export default class FetchExample extends React.Component {
           //element.split("T", -2);
           
         }*/
-        array.forEach(element => {
-          
-        });
-
       })
       .catch((error) =>{
         console.error(error);
@@ -162,26 +158,26 @@ export default class FetchExample extends React.Component {
 
     return(
       <View style={{flex: 1, paddingTop:20}}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-            <View style={{width: 150, height: 50, backgroundColor: 'powderblue'}} >
+        <View style={{flex: 1, flexDirection: 'column'}}>
+            <View style={styles.button} >
               <Button onPress={() => this.rendezes_pont()} title="Rendezés pont" />
               <Button onPress={() => this.rendezes_halal()} title="Rendezés halal" />
               <Button onPress={() => this.rendezes_ido()} title="Rendezés ido" />
               <Button onPress={() => this.rendezes_date()} title="Rendezés date" />
+              
+
             </View>
 
           </View>
-
-
         <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
           
           <View style={{flex: 1, flexDirection: 'row'}}>
-             <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} >
+             <View style={{width: 80, height: 50, backgroundColor: 'steelblue'}} >
               <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_nev}</Text>
             </View>
-            <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} >
+            <View style={{width: 80, height: 50, backgroundColor: 'powderblue'}} >
               <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_pont}</Text>
             </View>
             <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} >
@@ -190,7 +186,7 @@ export default class FetchExample extends React.Component {
             <View style={{width: 50, height: 50, backgroundColor: 'blue'}} >
               <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_ido}</Text>
             </View>
-            <View style={{width: 230, height: 50, backgroundColor: 'steelblue'}} >
+            <View style={{width: 150, height: 50, backgroundColor: 'steelblue'}} >
               <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_date.split ("T")[0].trim()}</Text>
             </View>
 
@@ -216,5 +212,21 @@ const styles = StyleSheet.create({
     width:300,
     marginLeft:"auto",
     marginRight:"auto",
-  }
+  },
+  button: {
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 4,
+    backgroundColor: "oldlace",
+    alignSelf: "flex-start",
+    marginHorizontal: "1%",
+    marginBottom: 6,
+    minWidth: "48%",
+    textAlign: "center",
+    alignSelf:"center",
+  },
+  row: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
 });
