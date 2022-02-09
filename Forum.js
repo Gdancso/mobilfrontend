@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View,TouchableOpacity,FlatList,ActivityIndicator,ScrollView,StyleSheet } from 'react-native';
+import { Text, TextInput, View,TouchableOpacity,FlatList,ActivityIndicator,ScrollView,StyleSheet,SafeAreaView } from 'react-native';
 
 
-const ipcim="172.16.0.13"
+const ipcim="172.16.0.19"
 export default class Bevitel extends Component {
   constructor(props) {
     super(props);
@@ -68,6 +68,7 @@ export default class Bevitel extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
       <View style={{alignItems:'center'}}>
       <View style={{width:350,padding: 10,backgroundColor:"blue",alignItems:"center",borderRadius:20,marginLeft:20,marginRight:20}}>
@@ -120,6 +121,7 @@ export default class Bevitel extends Component {
       
       </View>
       </ScrollView>
+      </SafeAreaView>
       
     );
   }

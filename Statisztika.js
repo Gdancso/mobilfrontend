@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity, Button,SafeAreaView,StatusBar } from 'react-native';
 
 
-const ipcim="172.16.0.13";
+const ipcim="172.16.0.19";
 export default class FetchExample extends React.Component {
 
 
