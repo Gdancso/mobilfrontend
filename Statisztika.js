@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity, Button,SafeAreaView,StatusBar } from 'react-native';
+const IP = require('./ip.js');
 
-
-const ipcim="172.16.0.19";
+//const ipcim="http://192.168.2.106:3000";
 export default class FetchExample extends React.Component {
 
 
@@ -13,7 +13,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_pont=()=>{
     alert("hello")
-    return fetch('http://'+ipcim+':3000/rend_pont')
+    return fetch('http://'+IP.ipcim+'/rend_pont')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -34,7 +34,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_halal=()=>{
     alert("hello")
-    return fetch('http://'+ipcim+':3000/rend_halal')
+    return fetch('http://'+IP.ipcim+'/rend_halal')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -55,7 +55,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_ido=()=>{
     alert("hello")
-    return fetch('http://'+ipcim+':3000/rend_ido')
+    return fetch('http://'+IP.ipcim+'/rend_ido')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -76,7 +76,7 @@ export default class FetchExample extends React.Component {
 
   rendezes_date=()=>{
     alert("hello")
-    return fetch('http://'+ipcim+':3000/rend_date')
+    return fetch('http://'+IP.ipcim+'/rend_date')
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -103,7 +103,7 @@ export default class FetchExample extends React.Component {
       bevitel1:szam
     }
 
-  fetch('http://'+ipcim+':3000/statisztika', {
+  fetch('http://'+IP.ipcim+'/statisztika', {
       method: "POST",
       body: JSON.stringify,
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -117,7 +117,8 @@ export default class FetchExample extends React.Component {
 
 
   componentDidMount(){
-    return fetch('http://'+ipcim+':3000/statisztika')
+    //alert("hello")
+    return fetch('http://'+IP.ipcim+'/statisztika')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -128,18 +129,11 @@ export default class FetchExample extends React.Component {
 
         });
         alert(JSON.stringify(this.state.dataSource))
-        //split
-        //let T = this.state.dataSource
-        /*for (let index = 0; index < T.length; index++) {
-          var element = T[index];
-          split_element = element.split("T", -2);
-          //element.split("T", -2);
-          
-        }*/
       })
       .catch((error) =>{
         console.error(error);
       });
+
   }
 
 

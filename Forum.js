@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, TextInput, View,TouchableOpacity,FlatList,ActivityIndicator,ScrollView,StyleSheet,SafeAreaView } from 'react-native';
+const IP = require('./ip.js');
 
 
-const ipcim="172.16.0.19"
+//const ipcim="http://192.168.2.106:3000"
 export default class Bevitel extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ export default class Bevitel extends Component {
 
   
  frissit =()=>{
-  return fetch('http://'+ipcim+':3000/ertekeles_uzenet')
+  return fetch('http://'+IP.ipcim+'/ertekeles_uzenet')
   .then((response) => response.json())
   .then((responseJson) => {
 
@@ -45,7 +46,7 @@ export default class Bevitel extends Component {
       bevitel2: this.state.ertekeles_uzenet,
     }
  
-    fetch('http://'+ipcim+':3000/ertekeles', {
+    fetch('http://'+IP.ipcim+'/ertekeles', {
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
