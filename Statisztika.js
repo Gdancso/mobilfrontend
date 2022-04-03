@@ -12,7 +12,7 @@ export default class FetchExample extends React.Component {
   }
 
   rendezes_pont=()=>{
-    alert("hello")
+    //alert("hello")
     return fetch('http://'+IP.ipcim+'/rend_pont')
     .then((response) => response.json())
     .then((responseJson) => {
@@ -23,7 +23,7 @@ export default class FetchExample extends React.Component {
       }, function(){
 
       });
-      alert(JSON.stringify(this.state.dataSource))
+      //alert(JSON.stringify(this.state.dataSource))
       //split
 
     })
@@ -33,7 +33,7 @@ export default class FetchExample extends React.Component {
   }
 
   rendezes_halal=()=>{
-    alert("hello")
+    //alert("hello")
     return fetch('http://'+IP.ipcim+'/rend_halal')
     .then((response) => response.json())
     .then((responseJson) => {
@@ -44,7 +44,7 @@ export default class FetchExample extends React.Component {
       }, function(){
 
       });
-      alert(JSON.stringify(this.state.dataSource))
+     // alert(JSON.stringify(this.state.dataSource))
       //split
 
     })
@@ -54,7 +54,7 @@ export default class FetchExample extends React.Component {
   }
 
   rendezes_ido=()=>{
-    alert("hello")
+   // alert("hello")
     return fetch('http://'+IP.ipcim+'/rend_ido')
     .then((response) => response.json())
     .then((responseJson) => {
@@ -65,7 +65,7 @@ export default class FetchExample extends React.Component {
       }, function(){
 
       });
-      alert(JSON.stringify(this.state.dataSource))
+     // alert(JSON.stringify(this.state.dataSource))
       //split
 
     })
@@ -75,7 +75,7 @@ export default class FetchExample extends React.Component {
   }
 
   rendezes_date=()=>{
-    alert("hello")
+    //alert("hello")
     return fetch('http://'+IP.ipcim+'/rend_date')
     .then((response) => response.json())
     .then((responseJson) => {
@@ -86,7 +86,7 @@ export default class FetchExample extends React.Component {
       }, function(){
 
       });
-      alert(JSON.stringify(this.state.dataSource))
+      //alert(JSON.stringify(this.state.dataSource))
       //split
 
     })
@@ -128,7 +128,7 @@ export default class FetchExample extends React.Component {
         }, function(){
 
         });
-        alert(JSON.stringify(this.state.dataSource))
+       // alert(JSON.stringify(this.state.dataSource))
       })
       .catch((error) =>{
         console.error(error);
@@ -151,40 +151,47 @@ export default class FetchExample extends React.Component {
     }
 
     return(
-      <View style={{flex: 1, paddingTop:20}}>
-        <View style={{flex: 1, flexDirection: 'column'}}>
+      
+      <View style={{ paddingTop:20}}>
+        <View style={styles.containerbutton}>
             <View style={styles.button} >
               <Button onPress={() => this.rendezes_pont()} title="Rendezés pont" />
+            </View>
+            <View style={styles.button} >
               <Button onPress={() => this.rendezes_halal()} title="Rendezés halal" />
-              <Button onPress={() => this.rendezes_ido()} title="Rendezés ido" />
+            </View>
+            <View style={styles.button} >
+            <Button onPress={() => this.rendezes_ido()} title="Rendezés ido" />   
+            </View>
+            <View style={styles.button} >
               <Button onPress={() => this.rendezes_date()} title="Rendezés date" />
-              
-
             </View>
 
           </View>
-        <FlatList
+          <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
-          
-          <View style={{flex: 1, flexDirection: 'row'}}>
-             <View style={{width: 80, height: 50, backgroundColor: 'steelblue'}} >
-              <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_nev}</Text>
+          <View style={styles.container}>
+             <View style={styles.rect} >
+              <Text style={styles.Text}>{item.statisztika_nev}</Text>
             </View>
-            <View style={{width: 80, height: 50, backgroundColor: 'powderblue'}} >
-              <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_pont}</Text>
+            <View style={styles.rect} >
+              <Text style={styles.Text}>{item.statisztika_pont}</Text>
             </View>
-            <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} >
-            <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_halal}</Text>
+            <View style={styles.rect} >
+            <Text style={styles.Text}>{item.statisztika_halal}</Text>
             </View>
-            <View style={{width: 50, height: 50, backgroundColor: 'blue'}} >
-              <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_ido}</Text>
+            <View style={styles.rect} >
+              <Text style={styles.Text}>{item.statisztika_ido}</Text>
             </View>
-            <View style={{width: 150, height: 50, backgroundColor: 'steelblue'}} >
-              <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}>{item.statisztika_date.split ("T")[0].trim()}</Text>
+            <View style={styles.rect} >
+              <Text style={styles.Text}>{item.statisztika_level_id}</Text>
             </View>
-
+            <View style={styles.rect} >
+              <Text style={styles.Text}>{item.statisztika_date.split ("T")[0].trim()}</Text>
+            </View>
           </View>
+
         }
 
         
@@ -203,24 +210,50 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "blue",
     padding: 10,
-    width:300,
+    width:80,
     marginLeft:"auto",
     marginRight:"auto",
   },
   button: {
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderRadius: 4,
-    backgroundColor: "oldlace",
-    alignSelf: "flex-start",
-    marginHorizontal: "1%",
-    marginBottom: 6,
-    minWidth: "48%",
-    textAlign: "center",
-    alignSelf:"center",
+    alignItems: "center",
+    padding: 10,
+    width:100,
+    marginLeft:"auto",
+    marginRight:"auto"
   },
   row: {
     flexDirection: "row",
     flexWrap: "wrap",
+  },
+  container: {
+    flex: 1,
+    alignItems: "stretch",
+    alignSelf: "center",
+    flexDirection: 'row'
+  },
+  rect: {
+    width: 63,
+    height: 85,
+    backgroundColor: "rgba(2,2,2,0.75)",
+    borderWidth: 1,
+    borderColor: "#000000"
+  },
+  Text:{
+    textAlign:"center",
+    color:"white",
+    fontSize: 20,
+    marginTop: 15,
+    marginBottom:5
+  },
+  head: {
+    borderWidth: 1,
+    borderColor: "rgba(0,0,0,1)",
+    backgroundColor: "rgba(2,2,2,1)",
+    width: 80,
+    height: 46
+  },
+  containerbutton: {
+    alignSelf: "center",
+    flexDirection: 'row'
   },
 });

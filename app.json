@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.gdancso.snack954058d9421f48f8b0cdf0c03afeb67a"
     },
     "web": {
       "favicon": "./assets/favicon.png"

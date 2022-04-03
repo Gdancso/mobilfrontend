@@ -28,7 +28,7 @@ export default class Bevitel extends Component {
     }, function(){
 
     });
-    alert(JSON.stringify(this.state.dataSource))
+    //alert(JSON.stringify(this.state.dataSource))
     //split
 
   })
@@ -40,7 +40,7 @@ export default class Bevitel extends Component {
  }
 
   felvitel=async ()=>{
-    alert("Megnyomva")
+    //alert("Megnyomva")
     let bemenet={
       bevitel1: this.state.ertekeles_nev,
       bevitel2: this.state.ertekeles_uzenet,
@@ -54,7 +54,7 @@ export default class Bevitel extends Component {
       .then((response) => response.text())
       .then((szoveg) => {
 
-        alert(szoveg)
+        //alert(szoveg)
         this.frissit()
       })
       .catch((error) =>{

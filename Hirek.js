@@ -27,7 +27,7 @@ export default class Bevitel extends Component {
     }, function(){
 
     });
-    alert(JSON.stringify(this.state.dataSource))
+    //alert(JSON.stringify(this.state.dataSource))
     //split
 
   })

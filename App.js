@@ -5,7 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Statisztika from './Statisztika';
 import Forum from './Forum';
-import Kapcsolat from './Kapcsolat';
+//import Kapcsolat from './Kapcsolat';
 import Hirek from './Hirek';
 
 
@@ -20,7 +20,7 @@ function HomeScreen({ navigation }) {
       <YoutubePlayer
         height={300}
         play={true}
-        videoId={'1B3Xi5L6siI'}
+        videoId={'k03IHc1kdV4'}
       />
 
       <View>
@@ -49,11 +49,11 @@ function statisztikafuggveny({ navigation }) {
     <Statisztika/>
   );
 }
-function KapcsolatF({ navigation }) {
+/*function KapcsolatF({ navigation }) {
   return (
     <Kapcsolat/>
   );
-}
+}*/
 function hirekfuggveny({ navigation }) {
   return (
     <Hirek/>
@@ -72,7 +72,7 @@ export default function App() {
         <Drawer.Screen name="Fórum" component={ForumScreen} />
         <Drawer.Screen name="Statisztika" component={statisztikafuggveny} />
         <Drawer.Screen name="Hírek" component={hirekfuggveny} />
-        <Drawer.Screen name="Kapcsolat" component={KapcsolatF} />
+        
       </Drawer.Navigator>
     </NavigationContainer>
   );
